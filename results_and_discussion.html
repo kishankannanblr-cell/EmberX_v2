@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results and Discussion - GuardianX Research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --border-color: rgba(226, 232, 240, 0.08);
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --accent: #4f46e5;
+            --accent-glow: rgba(79, 70, 229, 0.25);
+            --color-danger: #ef4444;
+            --color-warning: #f97316;
+            --color-success: #10b981;
+            --radius-lg: 16px;
+            --radius-md: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ef4444, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent);
+            padding-left: 12px;
+            margin-top: 10px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: rgba(15, 23, 42, 0.3);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        th, td {
+            padding: 14px 18px;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(79, 70, 229, 0.1);
+            color: var(--text-primary);
+            font-weight: 600;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        td {
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .highlight {
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .formula-box {
+            background-color: rgba(15, 23, 42, 0.5);
+            border-left: 4px solid var(--accent);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            font-family: monospace;
+            font-size: 1.1rem;
+            text-align: center;
+            margin: 25px 0;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+            color: var(--text-primary);
+        }
+
+        .caution-box {
+            background-color: rgba(239, 68, 68, 0.08);
+            border-left: 4px solid var(--color-danger);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            margin: 25px 0;
+            color: var(--color-danger);
+            font-size: 0.95rem;
+        }
+
+        .caution-box strong {
+            color: var(--color-danger);
+        }
+
+        ul {
+            list-style-type: none;
+            margin-bottom: 20px;
+        }
+
+        li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+
+        li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        .priority-list {
+            margin: 20px 0;
+        }
+
+        .priority-item {
+            background: rgba(15, 23, 42, 0.2);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 15px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .priority-badge {
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .p1 { background-color: rgba(239, 68, 68, 0.15); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.3); }
+        .p2 { background-color: rgba(239, 68, 68, 0.15); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.3); }
+        .p3 { background-color: rgba(249, 115, 22, 0.15); color: #fdbca7; border: 1px solid rgba(249, 115, 22, 0.3); }
+        .p4 { background-color: rgba(249, 115, 22, 0.15); color: #fdbca7; border: 1px solid rgba(249, 115, 22, 0.3); }
+        .p5 { background-color: rgba(234, 179, 8, 0.15); color: #fef08a; border: 1px solid rgba(234, 179, 8, 0.3); }
+        .p6 { background-color: rgba(16, 185, 129, 0.15); color: #a7f3d0; border: 1px solid rgba(16, 185, 129, 0.3); }
+
+        .priority-text strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 1rem;
+        }
+
+        .priority-text span {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .action-dispatch {
+            margin-top: 6px;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: var(--border-color);
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Results and Discussion</h1>
+            <p>GuardianX: Autonomous AI-Driven Human Detection & Room-Priority Triage</p>
+        </header>
+
+        <div class="card">
+            <h2>3.1. Dataset Characteristics and Experimental Setup</h2>
+            <p>The custom object detection model, designated as <strong>EmberX</strong>, was trained on a structural fire-ground dataset containing three distinct annotated classes: <em>fire</em>, <em>human</em>, and <em>smoke</em>. The dataset comprises a total of <strong>9,749</strong> images, which were partitioned into a training set of <strong>8,001</strong> images (82.1%), a validation set of <strong>1,017</strong> images (10.4%), and an independent test set of <strong>731</strong> images (7.5%).</p> 
+            <p>Training was performed using a transfer learning approach based on the <strong>Ultralytics YOLOv8-OBB (Oriented Bounding Box)</strong> architecture. The OBB framework is critical for emergency scene detection, as standard axis-aligned bounding boxes fail to accurately localize humans and fire propagation paths in arbitrary orientations. Training was accelerated on a Google Colab environment utilizing an <strong>NVIDIA® T4 GPU (16 GB VRAM)</strong> with Automatic Mixed Precision (AMP) enabled. The learning rate was governed by a cosine decay scheduler, starting at an initial rate (&eta;<sub>0</sub>) of 0.005 and decaying to a final rate (&eta;<sub>f</sub>) of 1% of the initial value. Advanced data augmentations were applied to prevent overfitting, including Mosaic augmentation (1.0), Mixup (0.15), random scaling (&plusmn;50%), and horizontal flips.</p>
+        </div>
+
+        <div class="card">
+            <h2>3.2. Quantitative Detection Performance</h2>
+            <p>The model's performance was evaluated using standard computer vision metrics, including Precision (P), Recall (R), mean Average Precision at an IoU threshold of 0.5 (mAP<sub>50</sub>), and mean Average Precision across the IoU range from 0.5 to 0.95 (mAP<sub>50-95</sub>). Table 1 summarizes the performance of the model on the validation and test splits.</p>
+
+            <h3 style="font-size: 1.1rem; margin-top: 15px; margin-bottom: 5px;">Table 1: EmberX Object Detection Performance Metrics</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dataset Split</th>
+                        <th class="text-center">Precision (P)</th>
+                        <th class="text-center">Recall (R)</th>
+                        <th class="text-center">mAP<sub>50</sub></th>
+                        <th class="text-center">mAP<sub>50-95</sub></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Validation (1,017 images)</strong></td>
+                        <td class="text-center">0.864 (86.4%)</td>
+                        <td class="text-center">0.792 (79.2%)</td>
+                        <td class="text-center highlight">0.843 (84.3%)</td>
+                        <td class="text-center">0.715 (71.5%)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Test (731 images)</strong></td>
+                        <td class="text-center">0.847 (84.7%)</td>
+                        <td class="text-center">0.750 (75.0%)</td>
+                        <td class="text-center highlight">0.827 (82.7%)</td>
+                        <td class="text-center">0.613 (61.3%)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>The model achieved a test-set <strong>mAP<sub>50</sub> of 0.827</strong>, representing highly robust detection capabilities across the three hazard classes in unseen test environments. The slight decrease in performance from validation to test splits is typical of real-world datasets, where testing images represent distinct, out-of-distribution visual environments.</p>
+        </div>
+
+        <div class="card">
+            <h2>3.3. Inference Speed and Real-Time Suitability</h2>
+            <p>For operational search-and-rescue (SAR) deployment, the system must process streaming video feeds at real-time speeds with minimal latency. Table 2 details the computational latency per frame when processing images of size 640x640 pixels on the test hardware.</p>
+
+            <h3 style="font-size: 1.1rem; margin-top: 15px; margin-bottom: 5px;">Table 2: Computational Latency and Throughput (NVIDIA® T4 GPU)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Processing Stage</th>
+                        <th class="text-center">Latency per Frame (ms)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Preprocessing</td>
+                        <td class="text-center">2.1 - 5.2 ms</td>
+                    </tr>
+                    <tr>
+                        <td>Inference (YOLOv8-OBB)</td>
+                        <td class="text-center">18.9 - 19.3 ms</td>
+                    </tr>
+                    <tr>
+                        <td>Postprocessing</td>
+                        <td class="text-center">2.2 - 3.4 ms</td>
+                    </tr>
+                    <tr style="font-weight: bold; background-color: rgba(79, 70, 229, 0.05);">
+                        <td>Total Pipeline Latency</td>
+                        <td class="text-center highlight">23.2 - 27.9 ms (~40 FPS)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>With a total latency of approximately <strong>25 ms per frame</strong>, the complete detection pipeline achieves a throughput of approximately <strong>40 frames per second (FPS)</strong>. This throughput satisfies the real-time threshold (&gt;30 FPS) and guarantees that the GuardianX software can process high-definition video streams from unmanned aerial vehicles (UAVs) or stationary thermal cameras without introducing processing bottlenecks.</p>
+        </div>
+
+        <div class="card">
+            <h2>3.4. Triage Prioritization Logic and Decision Support</h2>
+            <p>The primary technical contribution of the GuardianX platform is the conversion of raw, uncontextualized bounding box coordinates into actionable room-priority classifications. The priority score for each monitored room is computed using a weighted rule-based triage formula:</p>
+
+            <div class="formula-box">
+                Priority Score = 0.55 * Human_Detection + 0.25 * Fire_Detection + 0.15 * Smoke_Detection + 0.05 * Human_Count
+            </div>
+
+            <p>Using this calculated priority score and the presence of hazards, the GuardianX system classifies each scene into one of six emergency triage tiers, routing direct dispatch guidelines to the tactical command dashboard:</p>
+
+            <div class="priority-list">
+                <div class="priority-item">
+                    <span class="priority-badge p1">Priority 1</span>
+                    <div class="priority-text">
+                        <strong>Critical (Multi-Victim)</strong>
+                        <span>Active fire combined with two or more trapped victims.</span>
+                        <div class="action-dispatch">🚨 Action: Immediate Search & Rescue (SAR) + Fire Suppression.</div>
+                    </div>
+                </div>
+                <div class="priority-item">
+                    <span class="priority-badge p2">Priority 2</span>
+                    <div class="priority-text">
+                        <strong>Critical (Single-Victim)</strong>
+                        <span>Active fire combined with one trapped victim.</span>
+                        <div class="action-dispatch">🚨 Action: Immediate SAR dispatch + Fire Suppression.</div>
+                    </div>
+                </div>
+                <div class="priority-item">
+                    <span class="priority-badge p3">Priority 3</span>
+                    <div class="priority-text">
+                        <strong>Lower Category A (Multi-Victim)</strong>
+                        <span>Two or more trapped victims detected with no visible fire.</span>
+                        <div class="action-dispatch">⚡ Action: Emergency SAR dispatch.</div>
+                    </div>
+                </div>
+                <div class="priority-item">
+                    <span class="priority-badge p4">Priority 4</span>
+                    <div class="priority-text">
+                        <strong>Lower Category A (Single-Victim)</strong>
+                        <span>One trapped victim detected with no visible fire.</span>
+                        <div class="action-dispatch">⚡ Action: Emergency SAR dispatch.</div>
+                    </div>
+                </div>
+                <div class="priority-item">
+                    <span class="priority-badge p5">Priority 5</span>
+                    <div class="priority-text">
+                        <strong>Lower Category B</strong>
+                        <span>Active fire detected with no visible victims.</span>
+                        <div class="action-dispatch">🔥 Action: Fire Suppression dispatch.</div>
+                    </div>
+                </div>
+                <div class="priority-item">
+                    <span class="priority-badge p6">Priority 6</span>
+                    <div class="priority-text">
+                        <strong>Lowest / Monitoring</strong>
+                        <span>No immediate fire, smoke, or victims detected.</span>
+                        <div class="action-dispatch">🛡️ Action: Routine surveillance and safety monitoring.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>3.5. Technical Limitations and Edge Cases</h2>
+            <div class="caution-box">
+                <strong>CAUTION:</strong> First responders must not rely solely on automated visual detections during search-and-rescue operations. Obstacles such as structural collapse, heavy smoke occlusion, or camera feed failure can result in undetected victims (false negatives). This system must function as a secondary decision-support tool within a human-in-the-loop triage protocol.
+            </div>
+            
+            <ul>
+                <li><strong>Visual Mismatch in Low-Visibility Conditions:</strong> In environments characterized by dense particulate matter or heavy smoke opacity, standard RGB camera feeds experience severe visual degradation. The model's recall drops as human silhouettes become occluded. Future work will integrate long-wave infrared (LWIR) thermal camera feeds, enabling the model to detect thermal signatures of victims through thick smoke.</li>
+                <li><strong>Class Confusion and False Positives:</strong> In complex building fire scenes, debris, shadows, and reflections can occasionally be misclassified as human shapes or smoke. Implementing temporal smoothing across consecutive video frames can mitigate these transient false detections.</li>
+                <li><strong>Spatial Constraints:</strong> The visual model ranks rooms based on visible, frame-by-frame cues. However, it cannot evaluate structural collapse risks, toxic gas accumulation, oxygen depletion, or blocked exit paths. Consequently, a room prioritized as "Priority 5" (active fire, no victims) might house an adjacent room containing trapped individuals who are hidden from the camera's line of sight.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
