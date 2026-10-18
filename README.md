@@ -147,8 +147,8 @@ For distant victims or low-visibility high-resolution aerial frames from indoor 
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/kishankannanblr-cell/ai-human-detection-model.git
-cd ai-human-detection-model
+git clone https://github.com/kishankannanblr-cell/EmberX_v2.git
+cd EmberX_v2
 ```
 
 ### 2. Install Dependencies
