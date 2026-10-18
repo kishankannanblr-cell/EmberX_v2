@@ -24,6 +24,7 @@ COPY sahi_obb_inference.py /app/sahi_obb_inference.py
 COPY static /app/static
 COPY emberx_v2.pt /app/emberx_v2.pt
 COPY .streamlit /app/.streamlit
+COPY ["image 1.jpg", "image 2.jpg", "image 3.jpg", "image 4.jpg", "image 5.jpg", "image 6.jpg", "/app/"]
 
 EXPOSE 8080
 

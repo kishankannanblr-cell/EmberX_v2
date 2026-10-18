@@ -43,13 +43,14 @@ runs/
 *.zip
 *.tar.gz
 
-# Media / Videos (exceeding standard GitHub file size limits)
-*.mp4
+# Media / Videos (exclude root/scratch raw videos, allow lightweight sample videos)
 *.avi
 *.mov
-static/*.mp4
+room 1.mp4
+Room 3.mp4
 static/annotated/*
 !static/annotated/.gitkeep
+!static/Room_*.mp4
 
 # IDE and OS generated files
 .vscode/
