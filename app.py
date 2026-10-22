@@ -54,9 +54,115 @@ st.markdown("""
         font-family: 'Outfit', sans-serif;
     }
     
-    /* Hide default streamlit header/footer for cleaner dashboard look */
-    header, footer {
+    /* Hide decorative line, footer, and right-side header menu/deploy buttons */
+    [data-testid="stDecoration"],
+    [data-testid="stAppDeployButton"],
+    [data-testid="stToolbarActions"],
+    #MainMenu,
+    footer {
+        display: none !important;
         visibility: hidden !important;
+    }
+    
+    /* Make header and toolbar transparent and non-intrusive */
+    header[data-testid="stHeader"] {
+        background: transparent !important;
+        color: transparent !important;
+        height: auto !important;
+        border: none !important;
+        box-shadow: none !important;
+        pointer-events: none !important;
+    }
+    
+    [data-testid="stToolbar"] {
+        background: transparent !important;
+        pointer-events: none !important;
+    }
+    
+    /* Re-enable pointer events for the expand/collapse controls */
+    [data-testid="stExpandSidebarButton"],
+    [data-testid="stSidebarCollapsedControl"],
+    [data-testid="collapsedControl"] {
+        pointer-events: auto !important;
+    }
+    
+    /* Keep the inward collapse button (<<) ALWAYS clearly visible inside the sidebar header */
+    [data-testid="stSidebarCollapseButton"] {
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    [data-testid="stSidebarCollapseButton"] button {
+        visibility: visible !important;
+        opacity: 1 !important;
+        display: inline-flex !important;
+        color: #4f46e5 !important;
+        background-color: rgba(79, 70, 229, 0.08) !important;
+        border: 1px solid rgba(79, 70, 229, 0.2) !important;
+        border-radius: 8px !important;
+        padding: 4px !important;
+        transition: all 0.2s ease !important;
+    }
+    
+    [data-testid="stSidebarCollapseButton"] button:hover {
+        background-color: rgba(79, 70, 229, 0.18) !important;
+        border-color: #4f46e5 !important;
+        transform: scale(1.05) !important;
+    }
+    
+    [data-testid="stSidebarCollapseButton"] span[data-testid="stIconMaterial"] {
+        color: #4f46e5 !important;
+    }
+    
+    /* Style the outward reopen button (>>) to be a prominent, glowing glassmorphic button at top left */
+    [data-testid="stExpandSidebarButton"],
+    [data-testid="stSidebarCollapsedControl"],
+    [data-testid="collapsedControl"] {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 999999 !important;
+    }
+    
+    [data-testid="stExpandSidebarButton"] button,
+    [data-testid="stSidebarCollapsedControl"] button,
+    [data-testid="collapsedControl"] button {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(16px) !important;
+        -webkit-backdrop-filter: blur(16px) !important;
+        border: 1.5px solid #4f46e5 !important;
+        border-radius: 10px !important;
+        box-shadow: 0 4px 16px rgba(79, 70, 229, 0.28) !important;
+        margin: 10px 0 0 12px !important;
+        padding: 6px 10px !important;
+        cursor: pointer !important;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    
+    [data-testid="stExpandSidebarButton"] button:hover,
+    [data-testid="stSidebarCollapsedControl"] button:hover,
+    [data-testid="collapsedControl"] button:hover {
+        background: #4f46e5 !important;
+        box-shadow: 0 6px 22px rgba(79, 70, 229, 0.45) !important;
+        transform: scale(1.08) !important;
+    }
+    
+    [data-testid="stExpandSidebarButton"] span[data-testid="stIconMaterial"],
+    [data-testid="stSidebarCollapsedControl"] span[data-testid="stIconMaterial"],
+    [data-testid="collapsedControl"] span[data-testid="stIconMaterial"] {
+        color: #4f46e5 !important;
+        font-weight: 700 !important;
+        font-size: 22px !important;
+    }
+    
+    [data-testid="stExpandSidebarButton"] button:hover span[data-testid="stIconMaterial"],
+    [data-testid="stSidebarCollapsedControl"] button:hover span[data-testid="stIconMaterial"],
+    [data-testid="collapsedControl"] button:hover span[data-testid="stIconMaterial"] {
+        color: #ffffff !important;
     }
     
     /* Custom Glass Sidebar styling */
